@@ -1,0 +1,17 @@
+/*Register button*/
+.btn{
+    background-color: #02234C;
+    color: #fff;
+    transition: all .7s;
+  }
+
+.btn:hover{
+    color: #ffffff;
+    background-color:rgb(252,199,66);
+    border-color: rgb(252,199,66);
+  }
+
+
+
+
+
