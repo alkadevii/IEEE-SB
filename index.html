@@ -14,12 +14,15 @@
       overflow: hidden;
     }
 
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    background-color: #00539B; /* Pantone 293 C */
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('assets/img/about/Lbs1.jpeg') no-repeat center center;
       background-size: cover;
+      filter: blur(6px) brightness(0.8);
       z-index: -1;
     }
 
@@ -32,16 +35,26 @@
       color: #ffffff;
       text-align: center;
       padding: 20px;
+      background-color: rgba(0, 0, 0, 0.4);
     }
 
     .hero-content h1 {
       font-size: 3rem;
       margin-bottom: 20px;
+      animation: slideInTop 1s ease-out forwards;
     }
 
     .hero-content p {
       font-size: 1.2rem;
-      margin-bottom: 30px;
+      margin-bottom: 15px;
+      max-width: 800px;
+      opacity: 0;
+      animation: fadeJump 1s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    .hero-content p:nth-of-type(2) {
+      animation-delay: 0.8s;
     }
 
     .hero-content a {
@@ -51,81 +64,73 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
-      transition: background-color 0.3s;
+      margin-top: 20px;
+      transform: scale(0.8);
+      opacity: 0;
+      animation: zoomIn 0.8s ease-out forwards;
+      animation-delay: 1.2s;
     }
 
     .hero-content a:hover {
       background-color: #007b80;
     }
+
+    @keyframes slideInTop {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeJump {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes zoomIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-<!-- Particle background -->
-<div id="particles-js"></div>
+<!-- Background Image -->
+<div class="background-image"></div>
 
-<!-- Hero content -->
+<!-- Hero Content -->
 <div class="hero-content">
   <h1>IEEE SB LBSITW</h1>
-  <p>Inspiring Innovation. Empowering Women in Tech.</p>
+  <p>Imparting value-based technical education for transforming young women into professionals excelling 
+    globally in academics, research & development & industry meeting societal challenges.</p>
+  <p>IEEE Student Branch LBS Institute</p>
   <a href="main.html">Learn More</a>
 </div>
-
-<!-- Load Particles.js -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script>
-  particlesJS("particles-js", {
-    "particles": {
-      "number": {
-        "value": 90,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": { "value": "#ffffff" },
-      "shape": {
-        "type": "circle",
-        "stroke": { "width": 0, "color": "#000000" }
-      },
-      "opacity": {
-        "value": 0.5,
-        "random": false
-      },
-      "size": {
-        "value": 3,
-        "random": true
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#ffffff",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 3,
-        "direction": "none",
-        "straight": false,
-        "out_mode": "out"
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": { "enable": true, "mode": "repulse" },
-        "onclick": { "enable": true, "mode": "push" },
-        "resize": true
-      },
-      "modes": {
-        "repulse": { "distance": 100 },
-        "push": { "particles_nb": 4 }
-      }
-    },
-    "retina_detect": true
-  });
-</script>
 
 </body>
 </html>

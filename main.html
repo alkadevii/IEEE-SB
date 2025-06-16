@@ -109,6 +109,123 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
+   .about-flex {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-text {
+  flex: 1 1 400px;
+}
+
+.about-image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animated Icon Bullets */
+.icon-bullet-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.icon-bullet-list li {
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  font-size: 16px;
+  line-height: 1.7;
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.icon-bullet-list li:hover {
+  transform: translateX(5px);
+}
+
+.icon-bullet-list li:hover .bullet-icon {
+  transform: scale(1.3) rotate(360deg);
+  color: #008CFF;
+}
+
+.bullet-icon {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  color: var(--pantone-blue);
+  font-size: 10px;
+  transition: all 0.4s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-flex {
+    flex-direction: column;
+    text-align: left;
+  }
+}
+
+.join-ieee-section {
+  background: #f0f8ff;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 3px solid var(--pantone-blue);
+  border-bottom: 3px solid var(--pantone-blue);
+  margin-top: 50px;
+}
+
+.join-ieee-section h2 {
+  font-size: 26px;
+  color: var(--pantone-blue);
+  margin-bottom: 20px;
+}
+
+.join-content p {
+  font-size: 17px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.join-btn {
+  display: inline-block;
+  background-color: var(--pantone-blue);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 75, 135, 0.2);
+}
+
+.join-btn i {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.join-btn:hover {
+  background-color: #0071c5;
+  transform: translateY(-2px);
+}
+
+.join-btn:hover i {
+  transform: translateX(5px);
+}
+
+
     .events-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -136,6 +253,78 @@
     .event-card p {
       font-size: 15px;
     }
+
+    .execom-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.execom-member {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.execom-member:hover {
+  transform: translateY(-5px);
+}
+
+.execom-member img {
+  width: 100%;
+  max-width: 150px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border: 3px solid var(--pantone-blue);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.execom-member:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 75, 135, 0.2);
+}
+
+.execom-member h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--pantone-blue);
+}
+
+.execom-member p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.view-more-execom {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .execom-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
     footer {
       background: #00385f;
@@ -204,6 +393,7 @@
   <!-- <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div> -->
   <nav id="navMenu">
   <a href="#about"><i class="fas fa-info-circle"></i> <span class="nav-text">About</span></a>
+  <a href="#join"><i class="fas fa-user-plus"></i>Join Us</a>
   <a href="#events"><i class="fas fa-calendar-alt"></i> <span class="nav-text">Events</span></a>
   <a href="#execom"><i class="fas fa-users"></i> <span class="nav-text">Execom</span></a>
   <a href="#contact"><i class="fas fa-envelope"></i> <span class="nav-text">Contact</span></a>
@@ -212,6 +402,7 @@
 
 <nav class="mobile-nav">
   <a href="#about" title="About"><i class="fas fa-info-circle"></i></a>
+  <a href="#join" title="Join Us"><i class="fas fa-user-plus"></i></a>
   <a href="#events" title="Events"><i class="fas fa-calendar-alt"></i></a>
   <a href="#execom" title="Execom"><i class="fas fa-users"></i></a>
   <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
@@ -220,11 +411,39 @@
 <!-- About -->
 <section id="about" data-aos="fade-up">
   <h2><i class="fas fa-info-circle"></i> About Us</h2>
-  <div class="section-content">
+  <div class="about-flex">
+    <div class="about-text section-content">
+      <ul class="icon-bullet-list">
+        <li><i class="fas fa-circle bullet-icon"></i>
+          IEEE SB LBSITW is one of the most active Student Branches of <b>IEEE Kerala Section</b>. We as a team encourage divergent thinking in students by providing various opportunities.
+        </li>
+        <li><i class="fas fa-circle bullet-icon"></i>
+          IEEE SB LBSITW was established on <strong>4th of August, 2012</strong>.
+        </li>
+        <li><i class="fas fa-circle bullet-icon"></i>
+          IEEE has several societies that offer various benefits. There are currently <strong>3 societies (CS, RAS & SSCS)</strong> and <strong>1 affinity group (WIE)</strong> active in our SB.
+        </li>
+        <li><i class="fas fa-circle bullet-icon"></i>
+          We conduct several events from intra-collegiate to National levels both independently and in coordination with several active bodies of IEEE.
+        </li>
+      </ul>
+    </div>
+    <div class="about-image" data-aos="zoom-in">
+      <img src="assets/img/about/Lbs1.jpeg" alt="IEEE Team">
+    </div>
+  </div>
+</section>
+
+<!-- join  -->
+ <section id="join" class="join-ieee-section" data-aos="fade-up">
+  <h2><i class="fas fa-user-plus"></i> Ready to Join IEEE?</h2>
+  <div class="join-content">
     <p>
-      IEEE SB LBSITW, established on August 4, 2012, is one of the most active student branches under IEEE Kerala Section.
-      It promotes technical growth, innovation, and leadership. With active societies like <strong>CS, RAS, SSCS</strong>, and WIE, our SB empowers students through meaningful events.
+      Be part of the world's largest technical professional organization dedicated to advancing technology. Connect, innovate, and grow with us!
     </p>
+    <a href="https://www.ieee.org/membership/join/index.html" target="_blank" class="join-btn">
+      <i class="fas fa-arrow-right"></i> Join Now
+    </a>
   </div>
 </section>
 
@@ -251,12 +470,39 @@
 <section id="execom" data-aos="fade-up">
   <h2><i class="fas fa-user-tie"></i> Execom</h2>
   <div class="section-content">
-    <p>
-      Meet our 2025 Executive Committee members, leading with passion and commitment. 
-      <a href="execom.html" style="color: var(--pantone-blue);">View Full Execom &raquo;</a>
-    </p>
+    <p>Meet our 2025 Executive Committee members, leading with passion and commitment.</p>
+  </div>
+
+  <div class="execom-grid">
+    <div class="execom-member">
+      <img src="assets/img/execom/execom-2025/Dileep VK.jpeg" alt="Dileep V K">
+      <h4>Prof. Dileep V K</h4>
+      <p>Branch Councellor</p>
+    </div>
+    <div class="execom-member">
+      <img src="assets/img/execom/execom-2025/Rugmini Sai.jpg" alt="Rugmini Sai">
+      <h4>Rugmini Sai</h4>
+      <p>Chairperson</p>
+    </div>
+    <div class="execom-member">
+      <img src="assets/img/execom/execom-2025/Poorna Prakash .jpg" alt="Poorna">
+      <h4>Poorna Prakash</h4>
+      <p>Vice Chairperson</p>
+    </div>
+    <div class="execom-member">
+      <img src="assets/img/execom/execom-2025/Keerthana Sara Kiran .jpg" alt="Keerthana">
+      <h4>Keerthana Sara Kiran</h4>
+      <p>Secretary</p>
+    </div>
+    
+  </div>
+
+  <div class="view-more-execom">
+    <a href="execom.html" class="join-btn">View Full Execom <i class="fas fa-arrow-right"></i></a>
   </div>
 </section>
+
+
 
 <!-- Contact -->
 <section id="contact" data-aos="fade-up">

@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Execom</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --pantone-blue: #004b87;
+        --white: #ffffff;
+        --text-dark: #1c1c1c;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        font-family: "Merriweather", serif;
+        background: var(--white);
+        color: var(--pantone-blue);
+        scroll-behavior: smooth;
+        height: 100%;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: var(--white);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      header img {
+        height: 50px;
+      }
+
+      nav {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--pantone-blue);
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #008cff;
+      }
+      .mobile-nav {
+        display: none;
+      }
+
+      .section {
+        padding: 2rem;
+      }
+
+      h2 {
+        text-align: center;
+        color: var(--pantone-blue);
+        margin: 40px 0 20px;
+        font-size: 2rem;
+        animation: fadeInDown 1s ease;
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        animation: fadeIn 1.5s ease;
+      }
+
+      .card {
+        width: 260px;
+        background: var(--white);
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: zoomIn 1s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .card-body h3 {
+        margin-bottom: 0.5rem;
+        color: var(--pantone-blue);
+        font-size: 1.2rem;
+      }
+
+      .card-body p {
+        font-size: 0.9rem;
+      }
+
+      .social-links {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .social-links a {
+        color: var(--pantone-blue);
+        font-size: 1.2rem;
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: #008cff;
+        transform: scale(1.2);
+      }
+
+      /* Animations */
+      @keyframes fadeInDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes zoomIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav#navMenu {
+          display: none;
+        }
+
+        .mobile-nav {
+          display: flex;
+          justify-content: space-around;
+          background: var(--pantone-blue);
+          color: var(--white);
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          padding: 10px 0;
+          z-index: 999;
+        }
+
+        .mobile-nav a {
+          color: var(--white);
+          text-decoration: none;
+          font-size: 1.2rem;
+        }
+
+        .card {
+          width: 90%;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header>
+      <img src="assets/img/about/sb logo-black.png" alt="IEEE SB Logo" />
+      <nav id="navMenu">
+        <a href="main.html">
+      <i class="fas fa-home"></i>
+      <span class="nav-text">Home</span>
+    </a>
+       
+        <a href="main.html#join"><i class="fas fa-user-plus"></i>Join Us</a>
+        <a href="main.html#events"
+          ><i class="fas fa-calendar-alt"></i>
+          <span class="nav-text">Events</span></a
+        >
+        <a href="execom.html"
+          ><i class="fas fa-users"></i> <span class="nav-text">Execom</span></a
+        >
+        <a href="main.html#contact"
+          ><i class="fas fa-envelope"></i>
+          <span class="nav-text">Contact</span></a
+        >
+      </nav>
+    </header>
+
+    <!-- MOBILE NAVBAR -->
+    <nav class="mobile-nav">
+      <a href="main.html#about" title="About"
+        ><i class="fas fa-info-circle"></i
+      ></a>
+      <a href="main.html#join" title="Join Us"
+        ><i class="fas fa-user-plus"></i
+      ></a>
+      <a href="main.html#events" title="Events"
+        ><i class="fas fa-calendar-alt"></i
+      ></a>
+      <a href="main.html#execom" title="Execom"><i class="fas fa-users"></i></a>
+      <a href="main.html#contact" title="Contact"
+        ><i class="fas fa-envelope"></i
+      ></a>
+    </nav>
+
+    <!-- SECTIONS BELOW (same as before) -->
+    <section class="section" id="main-execom">
+      <h2>Core Team</h2>
+      <div class="card-container">
+        <!-- Branch Councellor -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Dileep VK.jpeg"
+            alt="Branch Councellor"
+          />
+          <div class="card-body">
+            <h3>Prof.Dileep V K</h3>
+            <p>Branch Councellor</p>
+          </div>
+        </div>
+        <!-- Chairperson -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Rugmini Sai.jpg"
+            alt="Branch Councellor"
+          />
+          <div class="card-body">
+            <h3>Rugmini Sai</h3>
+            <p>Chairperson</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/rugmini-sai-7a05bb258/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:rugminisai@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Vice Chairperson -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Poorna Prakash .jpg"
+            alt="Vice Chairperson"
+          />
+          <div class="card-body">
+            <h3>Poorna Prakash</h3>
+            <p>Vice Chairperson</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/poorna-prakash/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:poornaprakash@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Secretary -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Keerthana Sara Kiran .jpg"
+            alt="Secretary"
+          />
+          <div class="card-body">
+            <h3>Keerthana Sara Kiran</h3>
+            <p>Secretary</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/keerthana-sara-kiran-792557338/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:keerthanasarakiran@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Joint Secretrary -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/A J Gowri.jpg"
+            alt="joint Secretrary"
+          />
+          <div class="card-body">
+            <h3>A J Gowri</h3>
+            <p>Joint Secretary</p>
+            <div class="social-links">
+              <a
+                href="http://linkedin.com/in/a-j-gowri-7730472a2/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:gowriaj@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Treasurer -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Remitha U.webp"
+            alt="Treasurer"
+          />
+          <div class="card-body">
+            <h3>Remitha U</h3>
+            <p>Treasurer</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/remitha-u/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:remitha@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Link Representative -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Aleena C Darvin.jpeg"
+            alt="Vice Chairperson"
+          />
+          <div class="card-body">
+            <h3>Aleena C Darvin</h3>
+            <p>Link Representative</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/aleena-darvin-0875102a1/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:aleenadarvin@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Membership Development Coordinator -->
+          <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Aasiya.jpg"
+            alt="MDC"
+          />
+          <div class="card-body">
+            <h3>Aasiya</h3>
+            <p>Membership Development Coordinator</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/aasiya-ibrahim-48baa8254/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:aasiya2136@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Technical Coordinator -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Arpitha P Ajay.jpg"
+            alt="TC"
+          />
+          <div class="card-body">
+            <h3>Arpitha P Ajay</h3>
+            <p>Technical Coordinator</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/arpitha-p-ajay-a76bb3341/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:arpithapajay@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Design Lead -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/S SOUGANDHIKA .jpg"
+            alt="Design Lead"
+          />
+          <div class="card-body">
+            <h3>S Soughandhika</h3>
+            <p>Design Lead</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/sougandhika-s/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:sougandhika@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Content Lead -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Nivya Sudeesh.jpeg"
+            alt="Content Lead"
+          />
+          <div class="card-body">
+            <h3>Nivya Sudeesh</h3>
+            <p>Content Lead</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/nivyasudeesh/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:nivyasudeesh@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Webmaster -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Alka-Devi.jpeg"
+            alt="web master"
+          />
+          <div class="card-body">
+            <h3>Alka Devi</h3>
+            <p>Webmaster</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/alka-devi-10985920b/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:alkadevi@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Video Editing Lead -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Malavika M V.jpg"
+            alt="MDC"
+          />
+          <div class="card-body">
+            <h3>Malavika M V</h3>
+            <p>Video Editing Lead</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/malavika-m-v-231597339/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:malavika232@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="cs">
+      <h2>Computer Society</h2>
+      <div class="card-container">
+        <!-- Chairperson -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Varsha K.jpg"
+            alt="Chairperson"
+          />
+          <div class="card-body">
+            <h3>Varsha K</h3>
+            <p>Chairperson</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/varshaabdulsaleem/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:varshaasaleem@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Vice Chairperson -->   
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Mehreen Fathima B.jpg"
+            alt="Vice Chairperson"
+          />
+          <div class="card-body">
+            <h3>Varsha K</h3>
+            <p>Chairperson</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/mehreen-fathima-109378245/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:mehreenfathima@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Secretrary -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/DIYA NAZEER.jpg"
+            alt="Secretrary"
+          />
+          <div class="card-body">
+            <h3>Diya Nazeer</h3>
+            <p>Secretrary</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/diyanazeer/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:diyanazeer@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Joint Secretrary -->
+          <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Jissy J D.jpg"
+            alt="Joint Secretrary"
+          />
+          <div class="card-body">
+            <h3>Jissy J D</h3>
+            <p>Joint Secretrary</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/jissy-jd-423272339/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:jissyjustin@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- WIC -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Binthia D.jpg"
+            alt="WIC"
+          />
+          <div class="card-body">
+            <h3>Binthia D</h3>
+            <p>Women in Computing Lead</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/binthia-d/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:binthiad@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- AI SIG Coordinator -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Pavithra Kishore .webp"
+            alt="WIC"
+          />
+          <div class="card-body">
+            <h3>Pavithra Kishore</h3>
+            <p>AI SIG Coordinator</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/pavithra-kishore-071820323/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:pavithrakishore@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ras">
+      <h2>Robotics and Automation Society</h2>
+      <div class="card-container">
+        <!-- Chairperson -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Abinaraj A .jpg"
+            alt="Chairperson"
+          />
+          <div class="card-body">
+            <h3>Abinaraj A</h3>
+            <p>Chairperson</p>
+            <div class="social-links">
+              <a href="mailto:abyna1305@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Vice Chair -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Adithya Hemand.jpg"
+            alt="VC"
+          />
+          <div class="card-body">
+            <h3>Adithya Hemand</h3>
+            <p>Vice Chairperson</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/adithya-hemand-341013332/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:adithya_hemand@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Secretary -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Niya Aniyan.jpg"
+            alt="Secretary"
+          />
+          <div class="card-body">
+            <h3>Niya Aniyan</h3>
+            <p>Secretary</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/niya-aniyan/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:niyaniyan8354@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="wie">
+      <h2>WIE (Women in Engineering)</h2>
+      <div class="card-container">
+        <!-- Chairperson -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Aleena Jaison.jpg"
+            alt="Chairperson"
+          />
+          <div class="card-body">
+            <h3>Aleena Jaison</h3>
+            <p>Chairperson</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/aleena-jaison30/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:aleenajaison@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Vice Chairperson -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Navya J.jpg"
+            alt="VC"
+          />
+          <div class="card-body">
+            <h3>Navya J</h3>
+            <p>Vice Chairperson</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/navya-pavanan/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:navyapavanan@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Secretary -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Manju R.jpg"
+            alt="Secretary"
+          />
+          <div class="card-body">
+            <h3>Manju R</h3>
+            <p>Secretary</p>
+            <div class="social-links">
+              
+              <a href="mailto:manjur62659@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Joint Secretary -->
+         <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Nivethida H.png"
+            alt="Joint Secretary"
+          />
+          <div class="card-body">
+            <h3>Nivethida H</h3>
+            <p>Joint Secretary</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/nivethitha-h-d-12bb51331/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              
+              <a href="mailto:nivethithahd@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="scsss">
+      <h2>Solid State Circuit Society</h2>
+      <div class="card-container">
+        <!-- Chairperson -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Theertha Prasad .jpg"
+            alt="Chairperson"
+          />
+          <div class="card-body">
+            <h3>Theertha Prasad</h3>
+            <p>Chairperson</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/theertha-prasad-934299292/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:theerthaprasad@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Vice chairperson -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Adithi.T.R .jpg"
+            alt="VC"
+          />
+          <div class="card-body">
+            <h3>Adhiti T R</h3>
+            <p>Secretary</p>
+            <div class="social-links">
+
+              <a href="mailto:adithitr@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Secretary -->
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Salma Salim.jpg"
+            alt="Secretary"
+          />
+          <div class="card-body">
+            <h3>Salma Salim</h3>
+            <p>Secretary</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/salma-salim-026571292/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:salmasalim@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="assets/img/execom/execom-2025/Arwa Jasmin Mansoor.jpg"
+            alt="Joint Secretary"
+          />
+          <div class="card-body">
+            <h3>Arwa Jasmin</h3>
+            <p>Joint Secretary</p>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/arwa-jasmin-mansoor-a08a7432b/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:arwajmansoor@ieee.org" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
