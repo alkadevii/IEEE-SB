@@ -614,6 +614,95 @@
       font-size: 14px;
     }
 
+    #contact {
+  background: #f9fbfd;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 3px solid var(--pantone-blue);
+  border-bottom: 3px solid var(--pantone-blue);
+}
+
+#contact h2 {
+  font-size: 26px;
+  color: var(--pantone-blue);
+  margin-bottom: 25px;
+}
+
+.contact-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 75, 135, 0.08);
+  text-align: left;
+}
+
+.contact-container p {
+  font-size: 16px;
+  margin: 12px 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+.contact-container i {
+  color: var(--pantone-blue);
+  margin-right: 10px;
+  min-width: 20px;
+}
+
+.contact-container a {
+  color: #0071c5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-container a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background: #00385f;
+  color: #ddd;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 20px 15px;
+  }
+
+  #contact h2 {
+    font-size: 1.6rem;
+  }
+
+  .contact-container p {
+    font-size: 0.95rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-container i {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  #contact {
+    padding: 40px 10px;
+  }
+
+  .contact-container {
+    padding: 15px;
+  }
+
+  footer {
+    font-size: 13px;
+    padding: 15px;
+  }
+}
     /* Hide mobile nav by default */
 .mobile-nav {
   display: none;
@@ -847,16 +936,26 @@
 <!-- Contact -->
 <section id="contact" data-aos="fade-up">
   <h2><i class="fas fa-envelope"></i> Contact Us</h2>
-  <div class="section-content">
-    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:2024ieeesblbsitw@gmail.com">2024ieeesblbsitw@gmail.com</a></p>
-    <p><i class="fab fa-instagram"></i> Instagram: <a href="https://www.instagram.com/ieee_sb_lbsitw/" target="_blank">ieee_sb_lbsitw</a></p>
-    <p><i class="fas fa-map-marker-alt"></i> Location: <a href="https://maps.google.com/?q=LBSITW+Trivandrum" target="_blank">Poojappura Rd, Near Central Jail,Thiruvananthapuram, Kerala 695012</a></p>
+  <div class="contact-container">
+    <p><i class="fas fa-envelope"></i> 
+      Email: <a href="mailto:2024ieeesblbsitw@gmail.com">2024ieeesblbsitw@gmail.com</a>
+    </p>
+    <p><i class="fab fa-instagram"></i> 
+      Instagram: <a href="https://www.instagram.com/ieee_sb_lbsitw/" target="_blank">@ieee_sb_lbsitw</a>
+    </p>
+    <p><i class="fab fa-linkedin"></i> 
+      LinkedIn: <a href="https://www.linkedin.com/company/ieee-sb-lbsitw/" target="_blank">ieeesblbsitw</a>
+    </p>
+    <p><i class="fas fa-map-marker-alt"></i> 
+      Location: <a href="https://maps.google.com/?q=LBSITW+Trivandrum" target="_blank">
+        Poojappura Rd, Near Central Jail, Thiruvananthapuram, Kerala 695012
+      </a>
+    </p>
   </div>
 </section>
 
-<!-- Footer -->
 <footer data-aos="fade-in">
-  &copy; 2025 IEEE SB LBSITW. All rights reserved.
+  &copy; 2025 IEEE SB LBSITW.
 </footer>
 
 <!-- Scripts -->
