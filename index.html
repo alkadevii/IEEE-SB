@@ -4,133 +4,897 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IEEE SB LBSITW</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Orbitron', sans-serif;
-      height: 100%;
-      overflow: hidden;
+    :root {
+      --pantone-blue: #004B87;
+      --white: #ffffff;
+      --text-dark: #1c1c1c;
     }
 
-    .background-image {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Merriweather', serif;
+      background: var(--white);
+      color: var(--text-dark);
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    #particles-js {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: url('assets/img/about/Lbs1.jpeg') no-repeat center center;
-      background-size: cover;
-      filter: blur(6px) brightness(0.8);
+      width: 100%;
+      height: 100%;
       z-index: -1;
     }
 
-    .hero-content {
-      height: 100vh;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      flex-wrap: wrap;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--pantone-blue);
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--pantone-blue);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #008CFF;
+    }
+
+    #hero {
+      position: relative;
+      padding: 120px 20px 100px;
+      background: linear-gradient(to right, #eaf6ff, #ffffff);
+      display: flex;
       justify-content: center;
-      flex-direction: column;
-      color: #ffffff;
+      align-items: center;
       text-align: center;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+      max-width: 700px;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.2s ease-out;
     }
 
     .hero-content h1 {
       font-size: 3rem;
+      color: var(--pantone-blue);
       margin-bottom: 20px;
-      animation: slideInTop 1s ease-out forwards;
     }
 
     .hero-content p {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      max-width: 800px;
-      opacity: 0;
-      animation: fadeJump 1s ease-out forwards;
-      animation-delay: 0.5s;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 30px;
     }
 
-    .hero-content p:nth-of-type(2) {
-      animation-delay: 0.8s;
+    .hero-logo {
+  height: 150px; /* adjust to match the original icon size */
+  vertical-align: middle;
+  margin-right: 10px;
+  border-radius: 100px;
+}
+
+    .bg-shape {
+      position: absolute;
+      top: -50px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      background: rgba(0, 75, 135, 0.05);
+      border-radius: 50%;
+      z-index: 1;
+      animation: float 6s ease-in-out infinite;
     }
 
-    .hero-content a {
-      padding: 10px 20px;
-      background-color: #00adb5;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      margin-top: 20px;
-      transform: scale(0.8);
-      opacity: 0;
-      animation: zoomIn 0.8s ease-out forwards;
-      animation-delay: 1.2s;
-    }
+    .hero-btn {
+  display: inline-block;
+  margin-top: 30px;
+  background-color: var(--pantone-blue);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0, 75, 135, 0.2);
+  transition: all 0.3s ease;
+}
 
-    .hero-content a:hover {
-      background-color: #007b80;
-    }
+.hero-btn i {
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
 
-    @keyframes slideInTop {
-      0% {
-        transform: translateY(-50px);
-        opacity: 0;
+.hero-btn:hover {
+  background-color: #0071c5;
+  transform: translateY(-2px);
+}
+
+.hero-btn:hover i {
+  transform: translateX(5px);
+}
+
+
+     @media (max-width: 768px) {
+
+      .hero-logo {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+      nav {
+        display: none;
       }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
 
-    @keyframes fadeJump {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes zoomIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @media (max-width: 768px) {
       .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
+
       .hero-content p {
         font-size: 1rem;
+      }
+
+      .bg-shape {
+        display: none;
+      }
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      color: var(--pantone-blue);
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .section-content {
+      line-height: 1.7;
+      font-size: 17px;
+      background: #f9f9f9;
+      border-left: 4px solid var(--pantone-blue);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+   .about-flex {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-text {
+  flex: 1 1 400px;
+}
+
+.about-image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animated Icon Bullets */
+.icon-bullet-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.icon-bullet-list li {
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  font-size: 16px;
+  line-height: 1.7;
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.icon-bullet-list li:hover {
+  transform: translateX(5px);
+}
+
+.icon-bullet-list li:hover .bullet-icon {
+  transform: scale(1.3) rotate(360deg);
+  color: #008CFF;
+}
+
+.bullet-icon {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  color: var(--pantone-blue);
+  font-size: 10px;
+  transition: all 0.4s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-flex {
+    flex-direction: column;
+    text-align: left;
+  }
+}
+
+.join-ieee-section {
+  background: #f0f8ff;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 3px solid var(--pantone-blue);
+  border-bottom: 3px solid var(--pantone-blue);
+  margin-top: 50px;
+}
+
+.join-ieee-section h2 {
+  font-size: 26px;
+  color: var(--pantone-blue);
+  margin-bottom: 20px;
+}
+
+.join-content p {
+  font-size: 17px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.join-btn {
+  display: inline-block;
+  background-color: var(--pantone-blue);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 75, 135, 0.2);
+}
+
+.join-btn i {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.join-btn:hover {
+  background-color: #0071c5;
+  transform: translateY(-2px);
+}
+
+.join-btn:hover i {
+  transform: translateX(5px);
+}
+
+
+    .events-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.event-card {
+  width: 280px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.events-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
+    .event-card {
+      width: 280px;
+      height: 400px;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      animation: slideUp 0.8s ease-in-out both;
+      transition: transform 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
+
+    .event-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .events-grid.placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  min-height: 300px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.message-box {
+  text-align: center;
+  max-width: 600px;
+  background-color: #ffffff;
+  border: 2px dashed #004b87;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 75, 135, 0.1);
+  animation: float 4s ease-in-out infinite;
+}
+
+.message-box img {
+  max-width: 180px;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.message-box p {
+  font-size: 1.2rem;
+  color: #004b87;
+  line-height: 1.6;
+}
+
+
+.view-all-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #004B87;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.view-all-btn:hover {
+  background-color: #0074D9;
+}
+
+.group-section {
+  background: linear-gradient(135deg, #e6f0fa, #ffffff);
+  padding: 80px 20px;
+  border-top: 3px solid var(--pantone-blue);
+  border-bottom: 3px solid var(--pantone-blue);
+}
+
+.group-section h2 {
+  text-align: center;
+  font-size: 28px;
+  color: var(--pantone-blue);
+  margin-bottom: 50px;
+}
+
+.group-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.group-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.group-logo img {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+}
+
+.group-description {
+  flex: 1;
+}
+
+.group-description h3 {
+  font-size: 22px;
+  color: var(--pantone-blue);
+  margin-bottom: 12px;
+}
+
+.group-description p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .group-item,
+  .group-item.reverse {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .group-logo img {
+    margin-bottom: 20px;
+  }
+}
+
+    .execom-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.execom-member {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.execom-member:hover {
+  transform: translateY(-5px);
+}
+
+.execom-member img {
+  width: 100%;
+  max-width: 150px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border: 3px solid var(--pantone-blue);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.execom-member:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 75, 135, 0.2);
+}
+
+.execom-member h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--pantone-blue);
+}
+
+.execom-member p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.view-more-execom {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .execom-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+
+    footer {
+      background: #00385f;
+      color: #ddd;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    /* Hide mobile nav by default */
+.mobile-nav {
+  display: none;
+}
+
+/* Show mobile nav only on small screens */
+@media (max-width: 768px) {
+  /* Hide desktop nav in mobile view */
+  header nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid #ddd;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+
+  .mobile-nav a {
+    color: var(--pantone-blue);
+    font-size: 22px;
+    text-align: center;
+    flex: 1;
+    transition: color 0.3s ease;
+  }
+
+  .mobile-nav a:hover {
+    color: #008CFF;
+  }
+
+
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
+
 <body>
 
-<!-- Background Image -->
-<div class="background-image"></div>
+<!-- Particle Background -->
+<div id="particles-js"></div>
 
-<!-- Hero Content -->
-<div class="hero-content">
-  <h1>IEEE SB LBSITW</h1>
-  <p>Imparting value-based technical education for transforming young women into professionals excelling 
-    globally in academics, research & development & industry meeting societal challenges.</p>
-  <p>IEEE Student Branch LBS Institute</p>
-  <a href="main.html">Learn More</a>
+<!-- Header with Nav -->
+<header>
+  <img src="assets/img/about/sb logo-black.png" alt="IEEE SB Logo">
+  <!-- <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div> -->
+  <nav id="navMenu">
+  <a href="#about"><i class="fas fa-info-circle"></i> <span class="nav-text">About</span></a>
+  <a href="#join"><i class="fas fa-user-plus"></i>Join Us</a>
+  <a href="events.html"><i class="fas fa-calendar-alt"></i> <span class="nav-text">Events</span></a>
+  <a href="#execom"><i class="fas fa-users"></i> <span class="nav-text">Execom</span></a>
+  <a href="#contact"><i class="fas fa-envelope"></i> <span class="nav-text">Contact</span></a>
+</nav>
+</header>
+
+<nav class="mobile-nav">
+  <a href="#about" title="About"><i class="fas fa-info-circle"></i></a>
+  <a href="#join" title="Join Us"><i class="fas fa-user-plus"></i></a>
+  <a href="events.html" title="Events"><i class="fas fa-calendar-alt"></i></a>
+  <a href="#execom" title="Execom"><i class="fas fa-users"></i></a>
+  <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
+</nav>
+
+<section id="hero">
+  <div class="bg-shape"></div>
+  <div class="hero-content">
+    <h1>
+      <img src="assets/img/about/ieee hero.jpg" alt="IEEE Logo" class="hero-logo" />
+      IEEE SB LBSITW
+    </h1>
+    <p>
+      At IEEE SB LBSITW, we empower students to innovate, collaborate, and lead. 
+      Discover technical events, workshops, and opportunities to grow with us.
+    </p>
+    <a href="#about" class="hero-btn">
+      See What We Do <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" data-aos="fade-up">
+  <h2><i class="fas fa-info-circle"></i> About Us</h2>
+  <div class="about-flex">
+    <div class="about-text section-content">
+      <ul class="icon-bullet-list">
+        <li><i class="fas fa-circle bullet-icon"></i>
+          IEEE SB LBSITW is one of the most active Student Branches of <b>IEEE Kerala Section</b>. We as a team encourage divergent thinking in students by providing various opportunities.
+        </li>
+        <li><i class="fas fa-circle bullet-icon"></i>
+          IEEE SB LBSITW was established on <strong>4th of August, 2012</strong>.
+        </li>
+        <li><i class="fas fa-circle bullet-icon"></i>
+          IEEE has several societies that offer various benefits. There are currently <strong>3 societies (CS, RAS & SSCS)</strong> and <strong>1 affinity group (WIE)</strong> active in our SB.
+        </li>
+        <li><i class="fas fa-circle bullet-icon"></i>
+          We conduct several events from intra-collegiate to National levels both independently and in coordination with several active bodies of IEEE.
+        </li>
+      </ul>
+    </div>
+    <div class="about-image" data-aos="zoom-in">
+      <img src="assets/img/about/Lbs1.jpeg" alt="IEEE Team">
+    </div>
+  </div>
+</section>
+
+<!-- join  -->
+ <section id="join" class="join-ieee-section" data-aos="fade-up">
+  <h2><i class="fas fa-user-plus"></i> Ready to Join IEEE?</h2>
+  <div class="join-content">
+    <p>
+      Be part of the world's largest technical professional organization dedicated to advancing technology. Connect, innovate, and grow with us!
+    </p>
+    <a href="https://www.ieee.org/membership/join/index.html" target="_blank" class="join-btn">
+      <i class="fas fa-arrow-right"></i> Join Now
+    </a>
+  </div>
+</section>
+
+<!-- Events -->
+<section id="events" data-aos="fade-up">
+  <h2><i class="fas fa-calendar-days"></i> Upcoming Events</h2>
+  <div class="events-grid placeholder">
+  <div class="message-box">
+    <p>
+      We're crafting something exciting for you!<br />
+      Stay tuned for our next epic event.
+    </p>
+  </div>
 </div>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="events.html" class="view-all-btn">
+      View Past Events <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+
+<!-- Execom -->
+<section id="execom" data-aos="fade-up">
+  <h2><i class="fas fa-user-tie"></i> Execom</h2>
+  <div class="section-content">
+    <p>Meet our 2025 Executive Committee members, leading with passion and commitment.</p>
+  </div>
+
+  <div class="execom-grid">
+    <div class="execom-member">
+      <img src="assets/img/execom/execom-2025/Dileep VK.jpeg" alt="Dileep V K">
+      <h4>Prof. Dileep V K</h4>
+      <p>Branch Councellor</p>
+    </div>
+    <div class="execom-member">
+      <img src="assets/img/execom/execom-2025/Rugmini Sai.jpg" alt="Rugmini Sai">
+      <h4>Rugmini Sai</h4>
+      <p>Chairperson</p>
+    </div>
+    <div class="execom-member">
+      <img src="assets/img/execom/execom-2025/Poorna Prakash .jpg" alt="Poorna">
+      <h4>Poorna Prakash</h4>
+      <p>Vice Chairperson</p>
+    </div>
+    <div class="execom-member">
+      <img src="assets/img/execom/execom-2025/Keerthana Sara Kiran .jpg" alt="Keerthana">
+      <h4>Keerthana Sara Kiran</h4>
+      <p>Secretary</p>
+    </div>
+    
+  </div>
+
+  <div class="view-more-execom">
+    <a href="execom.html" class="join-btn">View Full Execom <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- Affinity Groups and Societies -->
+ <section id="groups" class="group-section" data-aos="fade-up">
+  <h2><i class="fas fa-layer-group"></i> Affinity Groups & Societies</h2>
+
+  <div class="group-item">
+    <div class="group-logo"><img src="assets/img/icon/wie logo.png" alt="WIE Logo"></div>
+    <div class="group-description">
+      <h3>WIE - Women in Engineering</h3>
+      <p>
+        IEEE WIE is one of the world’s leaders in changing the face of engineering. Our global network connects over 20,000 members in over 100 countries to advance women in technology at all points in their lives and careers. IEEE WIE members make lifelong friendships, acquire influential mentors, and make a difference for the benefit of humanity.
+      </p>
+    </div>
+  </div>
+
+  <div class="group-item reverse">
+    <div class="group-logo"><img src="assets/img/icon/ieee cs society logo.png" alt="Computer Society Logo"></div>
+    <div class="group-description">
+      <h3>Computer Society (CS)</h3>
+      <p>
+        The IEEE Computer Society (IEEE CS) is the premier source for information, inspiration, and collaboration in computer science and engineering. Connecting members worldwide, the IEEE Computer Society empowers the people who advance technology by delivering tools for individuals at all stages of their professional careers. IEEE CS's trusted resources include SWEBOK, continuous learning opportunities, a robust digital library, international conferences, peer-reviewed publications, and globally recognized standards.
+      </p>
+    </div>
+  </div>
+
+  <div class="group-item">
+    <div class="group-logo"><img src="assets/img/icon/ras logo (org).png" alt="RAS Logo"></div>
+    <div class="group-description">
+      <h3>Robotics & Automation Society (RAS)</h3>
+      <p>
+        The IEEE Robotics and Automation Society's objectives are scientific, literary and educational in character. The Society strives for the advancement of the theory and practice of robotics and automation engineering and science and of the allied arts and sciences, and for the maintenance of high professional standards among its members, all in consonance with the Constitution and Bylaws of the IEEE and with special attention to such aims within the Field of Interest of the Society.
+      </p>
+    </div>
+  </div>
+
+  <div class="group-item reverse">
+    <div class="group-logo"><img src="assets/img/icon/sscslogo.png" alt="SSCS Logo"></div>
+    <div class="group-description">
+      <h3>Solid-State Circuits Society (SSCS)</h3>
+      <p>
+        SSCS focuses on integrated-circuit career opportunities and education, offering Society members: Journal of Solid-State Circuits, Solid-State Circuits Magazine,International conferences ,Webinars on Cutting Edge Topics ,Online tutorials ,Local networking at More than 100 Chapters worldwide.With over 10,000 members around the world, the IEEE Solid-State Circuits Society focuses on fabricated integrated circuit designs -- in contrast to simulated circuits and analyzed models-- for all applications using relevant materials and interconnections.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" data-aos="fade-up">
+  <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+  <div class="section-content">
+    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:2024ieeesblbsitw@gmail.com">2024ieeesblbsitw@gmail.com</a></p>
+    <p><i class="fab fa-instagram"></i> Instagram: <a href="https://www.instagram.com/ieee_sb_lbsitw/" target="_blank">ieee_sb_lbsitw</a></p>
+    <p><i class="fas fa-map-marker-alt"></i> Location: <a href="https://maps.google.com/?q=LBSITW+Trivandrum" target="_blank">Poojappura Rd, Near Central Jail,Thiruvananthapuram, Kerala 695012</a></p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer data-aos="fade-in">
+  &copy; 2025 IEEE SB LBSITW. All rights reserved.
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+
+  window.onload = () => {
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: "#004B87" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#004B87", opacity: 0.2, width: 1 },
+        move: { enable: true, speed: 1.5 }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.5 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  };
+
+  function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+  }
+</script>
 
 </body>
 </html>

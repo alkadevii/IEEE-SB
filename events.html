@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Events</title>
+
+  <!-- Font Awesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --pantone-blue: #004b87;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,body {
+        font-family: "Merriweather", serif;
+        background: var(--white);
+        color: var(--pantone-blue);
+        scroll-behavior: smooth;
+        height: 100%;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: var(--white);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      header img {
+        height: 50px;
+      }
+
+      nav {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--pantone-blue);
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #008cff;
+      }
+      .mobile-nav {
+        display: none;
+      }
+
+
+    h2 {
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 2rem;
+      color: var(--pantone-blue);
+    }
+
+    .events-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
+    .event-card {
+      width: 280px;
+      height: 400px;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      animation: slideUp 0.8s ease-in-out both;
+      transition: transform 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
+
+    .event-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .events-grid.placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  min-height: 300px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.message-box {
+  text-align: center;
+  max-width: 600px;
+  background-color: #ffffff;
+  border: 2px dashed #004b87;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 75, 135, 0.1);
+  animation: float 4s ease-in-out infinite;
+}
+
+.message-box img {
+  max-width: 180px;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.message-box p {
+  font-size: 1.2rem;
+  color: #004b87;
+  line-height: 1.6;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile Nav */
+    @media (max-width: 768px) {
+      nav#navMenu {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+        justify-content: space-around;
+        background: var(--pantone-blue);
+        color: var(--white);
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding: 10px 0;
+        z-index: 999;
+      }
+
+      .mobile-nav a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1.3rem;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER WITH DESKTOP NAV -->
+  <header>
+    <img src="assets/img/about/sb logo-black.png" alt="IEEE SB Logo" />
+    <nav id="navMenu">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="index.html#join"><i class="fas fa-user-plus"></i> Join Us</a>
+      <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+      <a href="execom.html"><i class="fas fa-users"></i> Execom</a>
+      <a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+  </header>
+
+  <!-- MOBILE NAVBAR -->
+  <nav class="mobile-nav">
+    <a href="index.html#about"><i class="fas fa-info-circle"></i></a>
+    <a href="index.html#join"><i class="fas fa-user-plus"></i></a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i></a>
+    <a href="execom.html"><i class="fas fa-users"></i></a>
+    <a href="index.html#contact"><i class="fas fa-envelope"></i></a>
+  </nav>
+
+  <!-- UPCOMING EVENTS -->
+  <h2><i class="fas fa-calendar-day"></i> Upcoming Events</h2>
+<div class="events-grid placeholder">
+  <div class="message-box">
+    <p>
+      We're crafting something exciting for you!<br />
+      Stay tuned for our next epic event.
+    </p>
+  </div>
+</div>
+
+  <!-- PAST EVENTS -->
+  <h2><i class="fas fa-calendar-check"></i> Past Events</h2>
+  <div class="events-grid">
+    <div class="event-card">
+      <img src="assets/img/event/2024/techx24.jpg" alt="IdeaPitch 2023">
+    </div>
+    <div class="event-card">
+      <!-- 2024 -->
+      <img src="assets/img/event/2024/aiforge.jpg" alt="IdeaPitch 2023">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/cyber.jpg" alt="Hackathon 2023">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/geekspeak.jpg" alt="Workshop">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/matlab.jpg" alt="IdeaPitch 2023">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/meet.jpg" alt="Hackathon 2023">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/one_upon.jpg" alt="Workshop">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/orbitx.jpg" alt="IdeaPitch 2023">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/power.jpg" alt="Hackathon 2023">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/wayex.jpg" alt="Workshop">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/tech3.0.jpg" alt="IdeaPitch 2023">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/smartcities.jpg" alt="Hackathon 2023">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/starry.jpg" alt="Workshop">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/tt4.jpg" alt="IdeaPitch 2023">
+    </div>
+    <div class="event-card">
+      <img src="assets/img/event/2024/wayt.jpg" alt="Hackathon 2023">
+    </div>
+  </div>
+
+</body>
+</html>
